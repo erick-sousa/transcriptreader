@@ -71,7 +71,7 @@ if (submit_clicked or (url and not st.session_state.submitted)) and url:
             st.success("Transcript loaded successfully!")
 
             # Export options
-            st.download_button("⬇️ Download as TXT", transcript, file_name="transcript.txt")
+            
 
             doc = Document()
             for line in transcript.split("\n"):
@@ -87,7 +87,9 @@ if (submit_clicked or (url and not st.session_state.submitted)) and url:
             doc_io = BytesIO()
             doc.save(doc_io)
             doc_io.seek(0)
+            
             st.download_button("⬇️ Download as DOCX", doc_io, file_name="transcript.docx")
+            st.download_button("⬇️ Download as TXT", transcript, file_name="transcript.txt")
 
             # Preview area
             st.markdown("### Transcript Preview")
